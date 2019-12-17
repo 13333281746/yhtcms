@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class='comment'></div>
+    <script>
+        //es6模板语法反引号 `` 变量 ${变量}
+        let a11='lili'
+        const b1=`${a11} is sb`
+               
+        function sanitize(strings,...values){
+            const dirty=strings.reduce((prev,curr,i)=>`${prev}${curr}${values[i] || ''}`,'');
+            return DOMPuriify.sanitize(dirty); 
+        }
+        const commentDiv=document.querySelector(".comment");
+        commentDiv.innerHTML= sanitize`
+        <div class="comment-header">${user}</div>
+        <div class="comment-body">${textarea.value}</div>
+        `
+    </script>
+</body>
+</html>
